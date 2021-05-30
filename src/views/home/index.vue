@@ -21,7 +21,6 @@ export default defineComponent({
     msg: {
       type: String,
       required: true,
-      default: '11111111'
     },
     person: {
       type: Object as PropType<PersonInfo>
@@ -29,21 +28,15 @@ export default defineComponent({
   },
   setup: () => {
     const count = ref(0);
-
     const params = reactive({
       name: '',
       password: ''
     });
-
     const store = useStore();
-
     const storeName = store.state.user.name;
     const storegetName = store.getters['user/name'];
     console.log(storegetName);
-
-
     store.dispatch('user/GET_DATA', '111');
-
     login(params).then(res => {
       console.log(res);
     });
